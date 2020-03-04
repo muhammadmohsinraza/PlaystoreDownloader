@@ -98,6 +98,7 @@ def main():
             "package_name": app.docid,
             "title": app.title,
             "creator": app.creator,
+            "version" : app.details.appDetails.versionString,
         }
 
         if args.out.strip(" '\"") == downloaded_apk_default_location:
@@ -108,8 +109,9 @@ def main():
                 re.sub(
                     r"[^\w\-_.\s]",
                     "_",
-                    "{0} by {1} - {2}.apk".format(
-                        details["title"], details["creator"], details["package_name"]
+                   # "{0} by {1} - {2}.apk".format(
+                    #    details["title"], details["creator"], details["package_name"]
+                    "{0}-{1}.apk".format(details["title"].replace(" ", ""),details["version"]
                     ),
                 ),
             )
